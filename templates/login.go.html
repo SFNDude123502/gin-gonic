@@ -1,0 +1,38 @@
+{{define "login.go.html"}}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="/tmpl/favicon.ico">
+    <link rel="stylesheet" href="/tmpl/all.css">
+</head>
+<body>
+    <form method="post" action="/fetch">
+        <div>
+            <label>Username: </label>
+            <br />
+            <input name="username" type="text" class="input"/>
+        </div>
+        <br />
+        <br />
+        <div>
+            <label>Password: </label>
+            <br/>
+            <input name="password" type="password" class="input"/>
+        </div>
+        <br />
+        <br />
+        <input type="submit" value="Login" class="button"/>
+    </form>
+    <br />
+    <br />
+    <button onclick="location.href='/register'" class="button" >Register</button>
+    <br />
+    <br />
+    <br />
+    <span class="test"> {{.err}} </span>
+</body>
+</html>
+{{end}}

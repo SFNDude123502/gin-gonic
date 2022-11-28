@@ -1,0 +1,32 @@
+html{
+    color-scheme: dark;
+}
+/*
+.text{
+    color: azure;
+}
+*/
+.button {
+    float: left;
+    padding: 5px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #756a68;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+
+.button:hover {
+    background-color: rgb(72, 66, 66)
+}
+
+.button:active {
+    background-color: #343131;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

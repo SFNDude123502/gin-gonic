@@ -1,0 +1,20 @@
+{{define "index.go.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="icon" href="/tmpl/favicon.ico">
+    <link rel="stylesheet" href="/tmpl/all.css">
+</head>
+<body>
+    <ul>   
+        <li class="test">Username: {{.username}}</li>
+        <li class="test">Password: {{.password}}</li>
+        <li class="test">Authority Level: {{.authority}}</li>
+    </ul>
+</body>
+</html>
+{{end}}

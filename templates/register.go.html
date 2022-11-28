@@ -1,0 +1,23 @@
+{{define "register.go.html"}}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="icon" href="/tmpl/favicon.ico">
+    <link rel="stylesheet" href="/tmpl/all.css">
+</head>
+<body>
+    <form method="post" action="/make">
+        <input name="username" type="text" class="input"/>
+        <br />
+        <input name="password" type="password" class="input"/>
+        <br />
+        <input type="submit" value="Register"/>
+    </form>
+    <br />
+    <span class="text"> {{.err}} </span>
+</body>
+</html>
+{{end}}
