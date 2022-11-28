@@ -23,8 +23,9 @@ func getMongoAcc(username string) jsonAccount {
 	err = coll.FindOne(context.TODO(), bson.D{{Key: "doc", Value: username}}).Decode(&result)
 	if err == mongo.ErrNoDocuments {
 		fmt.Println("No document was account with the name " + username)
-		return jsonAccount{Doc: "missing account account"}
+		return jsonAccount{missing: true}
 	}
+	fmt.Println(result)
 	eh(err)
 	jsonData, err := json.MarshalIndent(result, "", "    ")
 	eh(err)

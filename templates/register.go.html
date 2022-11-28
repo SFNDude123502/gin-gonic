@@ -1,4 +1,5 @@
 {{define "register.go.html"}}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,14 +11,26 @@
 </head>
 <body>
     <form method="post" action="/make">
-        <input name="username" type="text" class="input"/>
+        <div>
+            <label>Username: </label>
+            <br />
+            <input name="username" type="text" class="input"/>
+        </div>
         <br />
-        <input name="password" type="password" class="input"/>
+        <div>
+            <label>Password: </label>
+            <br />
+            <input name="password" type="password" class="input"/>
+        </div>
         <br />
-        <input type="submit" value="Register"/>
+        <br />
+        <input type="submit" class="button" value="Register"/>
     </form>
     <br />
+    <br />
     <span class="text"> {{.err}} </span>
+    <br />
+    <br />
 </body>
 </html>
 {{end}}

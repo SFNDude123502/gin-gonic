@@ -15,6 +15,7 @@ import (
 type jsonAccount struct {
 	Doc        string                 `json:"doc"`
 	Login_data map[string]interface{} `json:"login_data"`
+	missing    bool
 }
 
 var uri string
@@ -47,12 +48,12 @@ func main() {
 	srv.POST("/fetch", fetch)
 	srv.GET("/", getHome)
 
-	srv.Run(":3333")
+	srv.Run(":8080")
 }
 
 func getRegister(c *gin.Context) {
 	last = "register"
-	c.HTML(200, "register.go.html", nil)
+	c.HTML(200, "register.go.html", gin.H{"err": c.Query("err")})
 }
 func getLogin(c *gin.Context) {
 	last = "login"
@@ -81,7 +82,7 @@ func fetch(c *gin.Context) {
 
 	acc := getMongoAcc(username)
 	fmt.Println(acc)
-	if acc.Doc == "missing account account" {
+	if acc.missing {
 		c.Redirect(301, "/login?err=Account Does Not Exist")
 		return
 	}
@@ -111,14 +112,16 @@ func make(c *gin.Context) {
 	username, password, auth := c.PostForm("username"), c.PostForm("password"), c.PostForm("auth")
 	if username == "" || password == "" {
 		c.Redirect(301, "/register?err=Missing Username or Password")
+		return
 	}
 	if auth == "" {
 		auth = "1"
 	}
 	acc := getMongoAcc(username)
 
-	if acc.Doc != "" {
+	if !acc.missing {
 		c.Redirect(301, "/register?err=Username is Taken")
+		return
 	}
 
 	authority, err := strconv.Atoi(auth)
